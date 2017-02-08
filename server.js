@@ -6,7 +6,7 @@ var colors = require('colors');
 
 // Configuration: get an API key from http://openweathermap.org/appid and
 // put it in this variable.
-const APPID = 'change me';
+const APPID = process.env.OPENWEATHERMAP_APPID || 'change me';
 
 // This would just be require("rivescript") if not for running this
 // example from within the RiveScript project.
