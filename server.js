@@ -1,4 +1,4 @@
-// Run this with: `node weathermanapp.js`
+// Run this with: `node server.js`
 
 var readline = require("readline");
 var request = require("request");
@@ -6,7 +6,7 @@ var colors = require('colors');
 
 // Configuration: get an API key from http://openweathermap.org/appid and
 // put it in this variable.
-const APPID = 'ff9889254d95bce224e30299be683849';
+const APPID = 'change me';
 
 // This would just be require("rivescript") if not for running this
 // example from within the RiveScript project.
@@ -173,8 +173,8 @@ var bot = new AsyncBot(function() {
 
     // Set up routes.
     app.post("/chateo/reply", getReply);
-    //app.get("/", showUsage);
-    //app.get("*", showUsage);
+    app.get("/", showUsage);
+    app.get("*", showUsage);
 
     // Start listening.
     app.listen(2001, function() {

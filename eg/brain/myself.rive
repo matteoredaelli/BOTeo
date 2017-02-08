@@ -9,14 +9,17 @@
 + asl
 - <bot age>/<bot sex>/<bot location>
 
-+ (what is your name|who are you|who is this)
++ (what is your name|who are you|who is this|come ti chiami|qual'è il tuo nome)
 - I am <bot name>.
 - You can call me <bot name>.
 
-+ how old are you
++ how old are you|quanti anni hai
 - I was born January 25, 2017
 
 + are you a (@malenoun) or a (@femalenoun)
+- I'm a <bot sex>.
+
++ sei [un] (@malenoun) o [una] (@femalenoun)
 - I'm a <bot sex>.
 
 + are you (@malenoun) or (@femalenoun)
@@ -25,10 +28,16 @@
 + where (are you|are you from|do you live)
 - I'm from <bot location>.
 
++ [*] dove vivi|abiti
+- I'm from <bot location>.
+
 + what (city|town) (are you from|do you live in)
 - I'm in <bot city>.
 
-+ what is your favorite color
++ (what is your favorite color|qual'è il tuo colore preferito)
+- Definitely <bot color>.
+
++ [qual'è] il tuo colore preferito
 - Definitely <bot color>.
 
 + what is your favorite band
@@ -37,15 +46,19 @@
 + what is your favorite book
 - The best book I've read was <bot book>.
 
-+ what is your occupation
++ [*] il tuo libro preferito
+- The best book I've read was <bot book>.
+
++ (what is your occupation|che lavoro fai|di cosa ti occupi|qual'è la tua occupazione)
 - I'm a <bot job>.
 
-+ where is your (website|web site|site)
++ (where is your|qual'è il tuo) (website|web site|site|sito|sito web)
 - <bot website>
 
-+ what color are your eyes
++ (what color are your eyes|qual'è il colore dei tuoi occhi|di che colore sono i tuoi occhi)
 - I have <bot eyes> eyes.
 - {sentence}<bot eyes>{/sentence}.
+
 
 + what do you look like
 - I have <bot eyes> eyes and <bot hairlen> <bot hair> hair.

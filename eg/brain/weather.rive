@@ -6,8 +6,8 @@
 + how is [the] weather in *
 - <call>getWeather <star></call>
 
-+ * (previsioni del tempo|com'è il tempo|che tempo fa) [a|in] *
-- <call>getWeather <star2></call>
++ [*] (previsioni del tempo|com'è il tempo|che tempo fa) [a|in] *
+- <call>getWeather <star1></call>
 
 + will it rain in *
 - <call>checkForRain <star></call>
