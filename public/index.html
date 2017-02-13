@@ -67,31 +67,29 @@ google_ad_channel = "";
       <div class="starter-template">
         <h1>Matteo Redaelli EU</h1>
         <p class="lead">Opensource, Linux, programming languages, ...</p>
-
-<div class="panel panel-success">
-<div class="panel-heading">
-{{myreply}}
-</div>
-</div>
-<script type="text/javascript"><!--
-google_ad_client = "pub-2729401952108622";
-google_ad_width = 728;
-google_ad_height = 90;
-google_ad_format = "728x90_as";
-google_ad_type = "text_image";
-google_ad_channel = "";
-//-->
-</script>
-<script type="text/javascript"
-  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-                  <div>
-                      <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English or Italian ..." type="text" required><br />
-                      <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)">Send</button>
-                      </span>
-                  </div>
-
+        
+        <div class="panel panel-success">
+          <div class="panel-heading" ng-bind-html="myreply"></div>
+        </div>
+        <script type="text/javascript"><!--
+                                           google_ad_client = "pub-2729401952108622";
+                                           google_ad_width = 728;
+                                           google_ad_height = 90;
+                                           google_ad_format = "728x90_as";
+                                           google_ad_type = "text_image";
+                                           google_ad_channel = "";
+                                           //-->
+        </script>
+        <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+        <div>
+          <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English or Italian ..." type="text" required><br />
+          <span class="input-group-btn">
+            <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)">Send</button>
+          </span>
+        </div>
+        
       </div>
 
 <script type="text/javascript"><!--

@@ -2,8 +2,8 @@
   "name": "boTeo",
   "version": "0.1.0",
   "description": "BOTeo is a chat bot",
-  "main": "app.js",
-    "keywords": [
+  "main": "lib/rivescript.js",
+  "keywords": [
     "bot",
     "chatbot",
     "chatterbot",
@@ -14,7 +14,6 @@
   ],
   "homepage": "https://www.matteoredaelli.eu/",
   "author": "Matteo Redaelli <matteo.redaelli@gmail.com> (http://www.redaelli.org/matteo/)",
-  "main": "lib/rivescript.js",
   "directories": {
     "lib": "lib",
     "doc": "docs"
@@ -23,8 +22,7 @@
     "type": "git",
     "url": "https://github.com/matteoredaelli/boteo-js.git"
   },
-  "contributors": [
-  ],
+  "contributors": [],
   "licenses": [
     {
       "type": "GPL V3+",
@@ -35,7 +33,6 @@
     "url": "https://github.com/matteoredaelli/boteo-js/issues",
     "email": "matteo.redaelli@gmail.com"
   },
-
   "dependencies": {
     "body-parser": "~1.14.2",
     "colors": "^1.1.2",

@@ -16,7 +16,9 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     RiveScript = require("./lib/rivescript.js");
 
-var rs = new RiveScript({utf8: true});
+var rs = new RiveScript({utf8: true
+                        // , debug: true
+                        });
 
 var mytest = function(location, callback) {
       callback.call(this, null, location + " parsed");
@@ -34,6 +36,43 @@ rs.setSubroutine("mytest", function (rs, args)  {
     });
   });
 })
+
+
+var esSearch = function(type, query, callback) {
+  var url = "http://localhost/grafo/" + type + "/_search";
+  console.log(url);
+  console.log(query);
+  request.get({
+    url: url,
+    qs: {
+      q: query
+    },json: true
+  }, function(error, response) {
+    if (response.statusCode !== 200) {
+      callback.call(this, error);
+    } else {
+      callback.call(this, null, response.body.hits.hits);
+    }
+  });
+};
+
+rs.setSubroutine("esSearch", function (rs, args)  {
+  return new rs.Promise(function(resolve, reject) {
+    var type = args.shift();
+    var fields = args.shift();
+    esSearch(type, args.join(' '), function(error, data){
+      console.log(data)
+      if(error) {
+        reject(error);
+      } else {
+        var newdata = data.map(function(x) {return x["_source"]});
+        //console.log(newdata);
+        resolve(arraylist2string(newdata));
+      }
+    });
+  });
+});
+
 
 var getWeather = function(location, callback) {
   request.get({
@@ -95,13 +134,16 @@ var watson_ws = function(ws, q, callback) {
 };
 
 var array2string = function(data) {
-    var out = "<a href=\"" + data.url + "\">" + data.title + "</a>"
-    for (var key in data) {
-	if (key !== "title" && key !== "url" && data[key]) {
-	    out = out + " " + key + ':' + data[key];
-	}
-    };
-    return out;
+  var out = "";
+  if (data && data.length > 0 && "url" in data) {
+    out = out + " <a href=\"" + data.url + "\">" + data.title + "</a>";
+  }
+  for (var key in data) {
+    if (key !== "title" && key !== "url" && data[key]) {
+      out = out + " " + key + ':' + data[key];
+    }
+  };
+  return out;
 }
 
 var arraylist2string = function(data) {
