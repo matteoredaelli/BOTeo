@@ -1,4 +1,4 @@
-// Run this with: `node server.js`
+// Run this with: `node server.js` or npm start
 
 var readline = require("readline");
 var request = require("request");
@@ -59,7 +59,8 @@ var esSearch = function(type, query, callback) {
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
     var type = args.shift();
-    var fields = args.shift();
+    //var fields = args.shift().split(",");
+    //console.log(fields);
     esSearch(type, args.join(' '), function(error, data){
       console.log(data)
       if(error) {
@@ -67,6 +68,7 @@ rs.setSubroutine("esSearch", function (rs, args)  {
       } else {
         var newdata = data.map(function(x) {return x["_source"]});
         //console.log(newdata);
+        // should be done for each eleemnt of list: var subset = fields.reduce(function(o, k) { o[k] = newdata[k]; return o; }, {});
         resolve(arraylist2string(newdata));
       }
     });
