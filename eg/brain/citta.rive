@@ -1,2 +1,29 @@
+// Substitutions
+! sub codice avviamento postale    = cap
+
++ [qual'è la] festa patronale di *
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ [qual'è il] prefisso [telefonico] di *
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ [qual'è il] codice istat|catastale di *
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ [qual'è il] [santo] patrono di *
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ * che [santo] patrono ha
+- <call>esSearch citt%C3%A0 name:<star></call>
+
 + [qual'è il] cap di *
-- <call>esSearch citt%C3%A0 name,CAP name:<star></call>
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ * che cap ha
+- <call>esSearch citt%C3%A0 name:<star></call>
++ in quale regione|provincia si trova *
+- <call>esSearch citt%C3%A0 name:<star></call>
+
++ * in quale regione|provincia si trova 
+- <call>esSearch citt%C3%A0 name:<star></call>
+
