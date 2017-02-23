@@ -84,10 +84,12 @@ google_ad_channel = "";
                 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
         <div>
-          <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English or Italian ..." type="text" required><br />
-          <span class="input-group-btn">
-            <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)">Send</button>
-          </span>
+          <form name="myForm">
+            <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English or Italian ..." type="text" required><br />
+            <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)" ng-disabled="myForm.$invalid">Send</button>
+            </span>
+          </form>
         </div>
         <br />
         <h3 id="help">Sample questions</h3>
