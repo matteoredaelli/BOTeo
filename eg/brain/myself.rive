@@ -71,3 +71,20 @@
 
 + who is your master
 - <bot master>.
+
++ are you a bot
+- How did you know I'm a robot?
+
++ knock knock
+- Who's there?
+
++ *
+% who is there
+- <star> who?
+
++ *
+% * who
+- lol! <star>! That's hilarious!
+
++ call me *
+@ my name is <star>

@@ -1,0 +1,10 @@
++ is debug mode enabled
+* <env debug> == 1 => Yes, debug mode is active.
+- No, debug mode is set to "<env debug>"
+
++ turn debug mode on
+* <get master> == true => <env debug=1>Debug mode enabled.
+- You can't turn debug mode on.
+
++ say *
+- Umm... "<person>"

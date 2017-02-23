@@ -1,0 +1,13 @@
+ + i hate you
+ - Well then, I won't talk to you until you take that back.{topic=apology}
+
+> topic apology
+
+  + *
+  - I won't listen to you until you apologize for being mean to me.
+  - I have nothing to say until you say you're sorry.
+
+  + (sorry|i apologize)
+  - Okay. I guess I'll forgive you then.{topic=random}
+
+< topic

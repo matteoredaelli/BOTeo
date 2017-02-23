@@ -2,3 +2,12 @@
 - I'm not sure how to reply to that.
 - Try asking your question a different way.
 - Let's change the subject.
+
++ <reply1>
+- Don't repeat what I say.
+
++ <input1>
+* <input1> eq <input2> => That's the second time you've repeated yourself.
+* <input1> eq <input3> => If you repeat yourself again I'll stop talking to you.
+// * <input1> eq <input4> => That's it. I'm done talking to you.{topic=blocked}
+- Please don't repeat yourself.
