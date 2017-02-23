@@ -7,7 +7,7 @@
 + [qual'è il|che] prefisso [telefonico] [di|ha] *
 - <call>esSearch citt%C3%A0 name:<star></call>
 
-+ [qual'è il|che] codice (istat|catastale) [di|ha] *
++ [qual'è il|che] codice (istat|catastale|postale) [di|ha] *
 - <call>esSearch citt%C3%A0 name:<star></call>
 
 + [qual'è il|che] [santo] patrono [di|ha] *
