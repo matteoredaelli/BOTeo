@@ -1,6 +1,6 @@
-# chaTeo
+# BOTeo
 
-matteoredaelli.ru
+matteoredaelli.eu
 
 ## Running
 

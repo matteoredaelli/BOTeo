@@ -1,6 +1,6 @@
 {
-  "name": "boTeo",
-  "version": "0.1.0",
+  "name": "BOTeo",
+  "version": "0.2.0",
   "description": "BOTeo is a chat bot",
   "main": "lib/rivescript.js",
   "keywords": [
@@ -20,17 +20,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matteoredaelli/boteo-js.git"
+    "url": "https://github.com/matteoredaelli/BOTeo.git"
   },
   "contributors": [],
   "licenses": [
     {
       "type": "GPL V3+",
-      "url": "https://github.com/matteoredaelli/boteo-js/blob/master/LICENSE"
+      "url": "https://github.com/matteoredaelli/BOTeo/blob/master/LICENSE"
     }
   ],
   "bugs": {
-    "url": "https://github.com/matteoredaelli/boteo-js/issues",
+    "url": "https://github.com/matteoredaelli/BOTeo/issues",
     "email": "matteo.redaelli@gmail.com"
   },
   "dependencies": {

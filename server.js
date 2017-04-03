@@ -210,13 +210,13 @@ var bot = new AsyncBot(function() {
 
     app.use(cookieParser());
     //app.use(express.static('public'))
-    app.use('/chateo/public', express.static('public'))
+    app.use('/BOTeo/public', express.static('public'))
     // Parse application/json inputs.
     app.use(bodyParser.json());
     app.set("json spaces", 4);
 
     // Set up routes.
-    app.post("/chateo/reply", getReply);
+    app.post("/BOTeo/reply", getReply);
     app.get("/", showUsage);
     app.get("*", showUsage);
 
@@ -292,7 +292,7 @@ function showUsage(req, res) {
 	res.write("Usage: curl -i \\\n");
 	res.write("   -H \"Content-Type: application/json\" \\\n");
 	res.write("   -X POST -d '" + JSON.stringify(egPayload) + "' \\\n");
-	res.write("   http://localhost:2001/reply");
+	res.write("   http://localhost:2001/BOTeo/reply");
 	res.end();
 }
 
