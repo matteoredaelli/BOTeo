@@ -1,101 +1,15 @@
 // Run this with: `node server.js` or npm start
 
 var readline = require("readline");
-var request = require("request");
 var colors = require('colors');
-
-var utils = require("./utils");
-var plugin_elastic = require("./plugin_elastic");
-var plugin_weather = require("./plugin_weather");
+var rs = require("./rs");
 
 // This would just be require("rivescript") if not for running this
 // example from within the RiveScript project.
 
 var express = require("express"),
-    cookieParser = require('cookie-parser')
-    bodyParser = require("body-parser"),
-    RiveScript = require("./lib/rivescript.js");
-
-var rs = new RiveScript({utf8: true
-                        // , debug: true
-                        });
-
-var mytest = function(location, callback) {
-      callback.call(this, null, location + " parsed");
-};
-
-
-rs.setSubroutine("mytest", function (rs, args)  {
-  return new rs.Promise(function(resolve, reject) {
-    mytest(args.join(' '), function(error, data){
-      if(error) {
-        reject(error);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-})
-
-rs.setSubroutine("esSearch", function (rs, args)  {
-  return new rs.Promise(function(resolve, reject) {
-    var type = args.shift();
-    //var fields = args.shift().split(",");
-    //console.log(fields);
-    plugin_elastic.esSearch(type, args.join(' '), function(error, data){
-      console.log(data)
-      if(error) {
-        reject(error);
-      } else {
-        var newdata = data.map(function(x) {return x["_source"]});
-        //console.log(newdata);
-        // should be done for each eleemnt of list: var subset = fields.reduce(function(o, k) { o[k] = newdata[k]; return o; }, {});
-        resolve(utils.arraylist2string(newdata));
-      }
-    });
-  });
-});
-
-rs.setSubroutine("getWeather", function (rs, args)  {
-  return new rs.Promise(function(resolve, reject) {
-    plugin_weather.getWeather(args.join(' '), function(error, data){
-      if(error) {
-        reject(error);
-      } else {
-        resolve(data.weather[0].description);
-      }
-    });
-  });
-});
-
-rs.setSubroutine("checkForRain", function(rs, args) {
-  return new rs.Promise(function(resolve, reject) {
-    getWeather(args.join(' '), function(error, data){
-      if(error) {
-        console.error('');
-        reject(error);
-      } else {
-        var rainStatus = data.rain ? 'yup :(' : 'nope';
-        resolve(rainStatus);
-      }
-    });
-  });
-});
-
-
-var watson_ws = function(ws, q, callback) {
-  request.get({
-    url: "http://bi.com/biapis/watson_explorer/" + ws + "/" + q,
-    qs: {},
-    json: true
-  }, function(error, response) {
-    if (response.statusCode !== 200) {
-      callback.call(this, response.body);
-    } else {
-      callback.call(this, null, response.body);
-    }
-  });
-};
+    cookieParser = require('cookie-parser'),
+    bodyParser = require("body-parser");
 
 // Create a prototypical class for our own chatbot.
 var AsyncBot = function(onReady) {
@@ -106,13 +20,6 @@ var AsyncBot = function(onReady) {
 	rs.sortReplies();
 	onReady();
     });
-
-    
-    // Load the replies and process them.
-//	rs.loadFile("weatherman.rive", function() {
-//	    rs.sortReplies();
-//	    onReady();
-//	});
     
     // This is a function for delivering the message to a user. Its actual
     // implementation could vary; for example if you were writing an IRC chatbot
@@ -144,7 +51,6 @@ var bot = new AsyncBot(function() {
     var app = express();
 
     app.use(cookieParser());
-    //app.use(express.static('public'))
     app.use('/BOTeo/public', express.static('public'))
     // Parse application/json inputs.
     app.use(bodyParser.json());
