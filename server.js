@@ -4,9 +4,9 @@ var readline = require("readline");
 var request = require("request");
 var colors = require('colors');
 
-// Configuration: get an API key from http://openweathermap.org/appid and
-// put it in this variable.
-const APPID = process.env.OPENWEATHERMAP_APPID || 'change me';
+var utils = require("./utils");
+var plugin_elastic = require("./plugin_elastic");
+var plugin_weather = require("./plugin_weather");
 
 // This would just be require("rivescript") if not for running this
 // example from within the RiveScript project.
@@ -37,31 +37,12 @@ rs.setSubroutine("mytest", function (rs, args)  {
   });
 })
 
-
-var esSearch = function(type, query, callback) {
-  var url = "http://localhost/grafo/" + type + "/_search";
-  console.log(url);
-  console.log(query);
-  request.get({
-    url: url,
-    qs: {
-      q: query
-    },json: true
-  }, function(error, response) {
-    if (response.statusCode !== 200) {
-      callback.call(this, error);
-    } else {
-      callback.call(this, null, response.body.hits.hits);
-    }
-  });
-};
-
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
     var type = args.shift();
     //var fields = args.shift().split(",");
     //console.log(fields);
-    esSearch(type, args.join(' '), function(error, data){
+    plugin_elastic.esSearch(type, args.join(' '), function(error, data){
       console.log(data)
       if(error) {
         reject(error);
@@ -69,34 +50,15 @@ rs.setSubroutine("esSearch", function (rs, args)  {
         var newdata = data.map(function(x) {return x["_source"]});
         //console.log(newdata);
         // should be done for each eleemnt of list: var subset = fields.reduce(function(o, k) { o[k] = newdata[k]; return o; }, {});
-        resolve(arraylist2string(newdata));
+        resolve(utils.arraylist2string(newdata));
       }
     });
   });
 });
 
-
-var getWeather = function(location, callback) {
-  request.get({
-    url: "http://api.openweathermap.org/data/2.5/weather",
-    qs: {
-      q: location,
-      APPID: APPID
-    },
-    json: true
-  }, function(error, response) {
-    if (response.statusCode !== 200) {
-      callback.call(this, response.body);
-    } else {
-      callback.call(this, null, response.body);
-    }
-  });
-};
-
-
 rs.setSubroutine("getWeather", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
-    getWeather(args.join(' '), function(error, data){
+    plugin_weather.getWeather(args.join(' '), function(error, data){
       if(error) {
         reject(error);
       } else {
@@ -135,36 +97,9 @@ var watson_ws = function(ws, q, callback) {
   });
 };
 
-var array2string = function(data) {
-  var out = "";
-  if (data && data.length > 0 && "url" in data) {
-    out = out + " <a href=\"" + data.url + "\">" + data.title + "</a>";
-  }
-  for (var key in data) {
-    if (key !== "title" && key !== "url" && data[key]) {
-      out = out + " " + key + ':' + data[key];
-    }
-  };
-  return out;
-}
-
-var arraylist2string = function(data) {
-    var out = ""
-    for (var i = 0; i < data.length; i++) {
-	out = out + array2string(data[i]) + "<br />";
-    };
-    return out;
-}
-
-
-
 // Create a prototypical class for our own chatbot.
 var AsyncBot = function(onReady) {
     var self = this;
-
-    if (APPID === 'change me') {
-        console.log('Error -- edit app.js and provide the APPID for Open Weathermap.'.bold.yellow);
-    }
 
     // Load the replies and process them.
     rs.loadDirectory("./eg/brain", function() {
