@@ -1,5 +1,7 @@
 // Run this with: `node server.js` or npm start
 
+"use strict";
+
 var readline = require("readline");
 var colors = require('colors');
 var rs = require("./rs");
@@ -72,8 +74,8 @@ function getReply(req, res) {
     // Get data from the JSON post.
     var message  = req.body.message;
     var vars     = req.body.vars;
-    var username;
-    
+    var username = req.body.username;
+    /*
     if (req.cookies.username) {
 	username = req.cookies.username;
     } else {
@@ -82,7 +84,8 @@ function getReply(req, res) {
 	console.log(username);
 	res.cookie('username', username, { maxAge: 100000 * 60 });
     }
-    
+    */
+    console.log(username);
     // Make sure username and message are included.
     if (typeof(message) === "undefined") {
 		return error(res, "message is a required key");

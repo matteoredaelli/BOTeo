@@ -1,3 +1,7 @@
+"use strict";
+
+var request = require("request");
+
 exports.esSearch = function(type, query, callback) {
   var url = "http://localhost/grafo/" + type + "/_search";
   console.log(url);
