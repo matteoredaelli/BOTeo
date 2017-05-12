@@ -1,4 +1,4 @@
-exports.array2string = function(data) {
+array2string = function(data) {
   var out = "";
   if (data && data.length > 0 && "url" in data) {
     out = out + " <a href=\"" + data.url + "\">" + data.title + "</a>";

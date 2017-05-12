@@ -43,7 +43,7 @@ rs.setSubroutine("esSearch", function (rs, args)  {
         reject(error);
       } else {
         var newdata = data.map(function(x) {return x["_source"]});
-        //console.log(newdata);
+        console.log(newdata);
         // should be done for each eleemnt of list: var subset = fields.reduce(function(o, k) { o[k] = newdata[k]; return o; }, {});
         resolve(utils.arraylist2string(newdata));
       }
