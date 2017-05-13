@@ -2,7 +2,7 @@
 ! sub codice avviamento postale    = cap
 
 + [*] come si chiamano (quelli di|gli abitanti di|chi vive a) *
-- <call>esSearch grafo citt%C3%A0 "Denominazione Abitanti,comune" name:<star1></call>
+- <call>esSearch grafo citt%C3%A0 "Denominazione Abitanti,comune" name:<star2></call>
 
 + [qual'è la|che] festa patronale [di|ha] *
 - <call>esSearch grafo citt%C3%A0 "Santo Patrono,comune" name:<star></call>
