@@ -14,7 +14,14 @@ array2string = function(data) {
 exports.arraylist2string = function(data) {
     var out = ""
     for (var i = 0; i < data.length; i++) {
-	out = out + array2string(data[i]) + "<br />";
+	out = out + array2string(data[i]) + ",\n";
     };
     return out;
+}
+
+exports.subset = function(obj, propList) {
+  return propList.reduce(function(newObj, prop) {
+    obj.hasOwnProperty(prop) && (newObj[prop] = obj[prop]);
+    return newObj;
+  }, {});
 }

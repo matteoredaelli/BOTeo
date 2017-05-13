@@ -1,28 +1,31 @@
 // Substitutions
 ! sub codice avviamento postale    = cap
 
++ [*] come si chiamano (quelli di|gli abitanti di|chi vive a) *
+- <call>esSearch grafo citt%C3%A0 "Denominazione Abitanti,comune" name:<star1></call>
+
 + [qual'è la|che] festa patronale [di|ha] *
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 "Santo Patrono,comune" name:<star></call>
 
 + [qual'è il|che] prefisso [telefonico] [di|ha] *
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 "Prefisso Telefonico,comune" name:<star></call>
 
-+ [qual'è il|che] codice (istat|catastale|postale) [di|ha] *
-- <call>esSearch grafo citt%C3%A0 name:<star2></call>
++ [qual'è il|che] codice catastale [di|ha] *
+- <call>esSearch grafo citt%C3%A0 "Codice Catastale,comune" name:<star></call>
+
++ [qual'è il|che] codice istat [di|ha] *
+- <call>esSearch grafo citt%C3%A0 "Codice Istat,comune" name:<star></call>
 
 + [qual'è il|che] [santo] patrono [di|ha] *
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
-
-+ * che [santo] patrono ha
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 "Santo Patrono,comune" name:<star></call>
 
 + [qual'è il|che] cap [di|ha] *
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 CAP,comune name:<star></call>
 
-+ * che cap ha
-- <call>esSearch grafo citt%C3%A0 name:<star></call>
++ in (che|quale) regione (si trova|sta) *
+- <call>esSearch grafo citt%C3%A0 Regione,comune name:<star3></call>
 
-+ in quale (regione|provincia) si trova *
-- <call>esSearch grafo citt%C3%A0 name:<star2></call>
++ in (che|quale) provincia (si trova|sta) *
+- <call>esSearch grafo citt%C3%A0 Provincia,comune name:<star3></call>
 
 

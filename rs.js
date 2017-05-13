@@ -36,16 +36,15 @@ rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
     const index = args.shift();
     const type = args.shift();
-    //var fields = args.shift().split(",");
-    //console.log(fields);
+    const fields = args.shift().split(",");
+    console.log(fields);
     plugin_elastic.esSearch(index, type, args.join(' '), function(error, data){
       console.log(data)
       if(error) {
         reject(error);
       } else {
-        var newdata = data.map(function(x) {return x["_source"]});
+        var newdata = data.map(function(x) {return  utils.subset(x["_source"], fields) });
         console.log(newdata);
-        // should be done for each eleemnt of list: var subset = fields.reduce(function(o, k) { o[k] = newdata[k]; return o; }, {});
         resolve(utils.arraylist2string(newdata));
       }
     });
