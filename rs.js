@@ -34,10 +34,11 @@ rs.setSubroutine("mytest", function (rs, args)  {
 
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
-    var type = args.shift();
+    const index = args.shift();
+    const type = args.shift();
     //var fields = args.shift().split(",");
     //console.log(fields);
-    plugin_elastic.esSearch(type, args.join(' '), function(error, data){
+    plugin_elastic.esSearch(index, type, args.join(' '), function(error, data){
       console.log(data)
       if(error) {
         reject(error);

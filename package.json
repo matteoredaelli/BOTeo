@@ -36,6 +36,7 @@
   "dependencies": {
     "body-parser": "~1.14.2",
     "colors": "^1.1.2",
+    "config": "^1.26.1",
     "cookie-parser": "^1.4.3",
     "elasticsearch": "^12.1.3",
     "express": "~4.13.3",

@@ -1,9 +1,10 @@
 "use strict";
 
-var request = require("request");
+var request = require("request"),
+    config  = require("config");
 
-exports.esSearch = function(type, query, callback) {
-  var url = "http://localhost/grafo/" + type + "/_search";
+exports.esSearch = function(index, type, query, callback) {
+  var url = config.get('elastic.url') + "/" + index + "/" + type + "/_search";
   console.log(url);
   console.log(query);
   request.get({

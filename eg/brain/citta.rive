@@ -2,27 +2,27 @@
 ! sub codice avviamento postale    = cap
 
 + [qual'è la|che] festa patronale [di|ha] *
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + [qual'è il|che] prefisso [telefonico] [di|ha] *
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + [qual'è il|che] codice (istat|catastale|postale) [di|ha] *
-- <call>esSearch citt%C3%A0 name:<star2></call>
+- <call>esSearch grafo citt%C3%A0 name:<star2></call>
 
 + [qual'è il|che] [santo] patrono [di|ha] *
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + * che [santo] patrono ha
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + [qual'è il|che] cap [di|ha] *
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + * che cap ha
-- <call>esSearch citt%C3%A0 name:<star></call>
+- <call>esSearch grafo citt%C3%A0 name:<star></call>
 
 + in quale (regione|provincia) si trova *
-- <call>esSearch citt%C3%A0 name:<star2></call>
+- <call>esSearch grafo citt%C3%A0 name:<star2></call>
 
 
