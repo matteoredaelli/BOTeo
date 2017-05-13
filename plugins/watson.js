@@ -1,8 +1,8 @@
 var request = require("request");
 
-exports.watson_ws = function(ws, q, callback) {
+exports.watson_ws = function(baseurl, ws, q, callback) {
   request.get({
-    url: "http://bi.com/biapis/watson_explorer/" + ws + "/" + q,
+    url: baseurl + "/" + ws + "/" + q,
     qs: {},
     json: true
   }, function(error, response) {
