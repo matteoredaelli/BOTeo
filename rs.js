@@ -1,6 +1,7 @@
 // Run this with: `node server.js` or npm start
 
-var request = require("request");
+var config = require("config"),
+    request = require("request");
 
 var utils = require("./utils"),
     plugin_elastic = require("./plugins/elastic"),
@@ -34,11 +35,12 @@ rs.setSubroutine("mytest", function (rs, args)  {
 
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
+    const elasticUrl = config.get('elastic.url')
     const index = args.shift();
     const type = args.shift();
     const fields = args.shift().split(",");
     console.log(fields);
-    plugin_elastic.esSearch(index, type, args.join(' '), function(error, data){
+    plugin_elastic.esSearch(elasticUrl, index, type, args.join(' '), function(error, data){
       console.log(data)
       if(error) {
         reject(error);
