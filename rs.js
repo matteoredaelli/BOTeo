@@ -4,7 +4,7 @@ var config = require("config"),
     request = require("request");
 
 var utils = require("./utils"),
-    plugin_elastic = require("./plugins/elastic"),
+    plugin_rest = require("./plugins/rest"),
     plugin_watson = require("./plugins/watson"),
     plugin_weather = require("./plugins/weather");
 
@@ -35,12 +35,17 @@ rs.setSubroutine("mytest", function (rs, args)  {
 
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
-    const elasticUrl = config.get('elastic.url')
+    const elasticUrl = config.get('elastic.url');
     const index = args.shift();
     const type = args.shift();
     const fields = args.shift().split(",");
+    const query = args.join(' ');
     console.log(fields);
-    plugin_elastic.esSearch(elasticUrl, index, type, args.join(' '), function(error, data){
+    const url = elasticUrl + "/" + index + "/" + type + "/_search";
+    const qs = {
+      q: query
+    }
+    plugin_rest.get(url, qs, function(error, data){
       console.log(data)
       if(error) {
         reject(error);
