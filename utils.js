@@ -1,6 +1,19 @@
 array2string = function(data) {
   var out = "";
-  if (data && data.length > 0 && "url" in data) {
+  if (data && "url" in data && "title" in data) {
+      out = data.title + " ( " + data.url + " ) ";
+  }
+  for (var key in data) {
+    if (key !== "title" && key !== "url" && data[key]) {
+      out = out + " " + key + ':' + data[key];
+    }
+  };
+  return out;
+}
+
+array2string_html = function(data) {
+  var out = "";
+  if (data && "url" in data) {
     out = out + " <a href=\"" + data.url + "\">" + data.title + "</a>";
   }
   for (var key in data) {
@@ -14,7 +27,7 @@ array2string = function(data) {
 exports.arraylist2string = function(data) {
     var out = ""
     for (var i = 0; i < data.length; i++) {
-	out = out + array2string(data[i]) + ",\n";
+	out = out + array2string(data[i]) + "    ";
     };
     return out;
 }

@@ -5,7 +5,6 @@ var config = require("config"),
 
 var utils = require("./utils"),
     plugin_rest = require("./plugins/rest"),
-    plugin_watson = require("./plugins/watson"),
     plugin_weather = require("./plugins/weather");
 
 // This would just be require("rivescript") if not for running this
@@ -13,7 +12,7 @@ var utils = require("./utils"),
 
 var RiveScript = require("./lib/rivescript.js"),
     rs = new RiveScript({utf8: true
-                        // , debug: true
+                        //, debug: true
                         });
 
 var mytest = function(location, callback) {
@@ -50,7 +49,7 @@ rs.setSubroutine("esSearch", function (rs, args)  {
       if(error) {
         reject(error);
       } else {
-        var newdata = data.map(function(x) {return  utils.subset(x["_source"], fields) });
+        var newdata = data.hits.hits.map(function(x) {return  utils.subset(x["_source"], fields) });
         console.log(newdata);
         resolve(utils.arraylist2string(newdata));
       }
@@ -82,6 +81,26 @@ rs.setSubroutine("checkForRain", function(rs, args) {
       }
     });
   });
+});
+
+rs.setSubroutine("watsonSearch", function (rs, args)  {
+    //console.log(args);
+    return new rs.Promise(function(resolve, reject) {
+	const watsonUrl = config.get('watson.url');
+	const index = args.shift();
+	const query = args.join(' ');
+	const url = watsonUrl + "/search_" + index + "/" + query;   
+	const qs = {}
+	console.log(url);
+	plugin_rest.get(url, qs, function(error, data){
+	    console.log(data)
+	    if(error) {
+          reject(error);
+	    } else {
+		resolve(utils.arraylist2string(data));
+	    }
+	});
+    });
 });
 
 module.exports = rs;
