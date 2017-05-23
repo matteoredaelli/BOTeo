@@ -8,11 +8,11 @@ app.config(['$httpProvider', function($httpProvider) {
 
 app.controller('planetController', function($scope, $http, $location) {
   $scope.searchR = function(query) {
-    var url = $location.protocol() + "://" + location.host + "/chateo/reply";
+    var url = $location.protocol() + "://" + location.host + "/BOTeo/reply";
     var payload = {
       message: query,
-      //vars:{name:""}};
-      vars:{}};
+      vars:{name:"a"}};
+      //vars:{}};
     $http.post(url, payload, {
       headers: {'Content-Type': 'application/json'}
     })

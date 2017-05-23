@@ -49,9 +49,13 @@ rs.setSubroutine("esSearch", function (rs, args)  {
       if(error) {
         reject(error);
       } else {
-        var newdata = data.hits.hits.map(function(x) {return  utils.subset(x["_source"], fields) });
-        console.log(newdata);
-        resolve(utils.arraylist2string(newdata));
+        if (data && data.hits && data.hits.hits) {
+          var newdata = data.hits.hits.map(function(x) {return  utils.subset(x["_source"], fields) });
+          console.log(newdata);
+          resolve(utils.arraylist2string(newdata));
+        } else {
+          resolve("none");
+        }
       }
     });
   });

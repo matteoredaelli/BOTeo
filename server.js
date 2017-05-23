@@ -61,7 +61,7 @@ var bot = new AsyncBot(function() {
     // Set up routes.
     app.post("/BOTeo/reply", getReply);
     app.get("/", showUsage);
-    app.get("*", showUsage);
+    //app.get("*", showUsage);
 
     // Start listening.
     app.listen(2001, function() {
@@ -85,6 +85,9 @@ function getReply(req, res) {
 	res.cookie('username', username, { maxAge: 100000 * 60 });
     }
     */
+    if (username == undefined) {
+       username = "guest" + guest++;
+    };
     console.log(username);
     // Make sure username and message are included.
     if (typeof(message) === "undefined") {
