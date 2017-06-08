@@ -27,7 +27,7 @@ array2string_html = function(data) {
 exports.arraylist2string = function(data) {
     var out = ""
     for (var i = 0; i < data.length; i++) {
-	out = out + array2string(data[i]) + "    ";
+	out = out + array2string_html(data[i]) + "    ";
     };
     return out;
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Assistant</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    
+    <script src="js/chat.js"></script>
+    <link rel="stylesheet" href="css/chat.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+  <body ng-app="myApp" ng-controller="planetController">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-2387554-16', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <h1></h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12 col-sm-6 col-md-8">
+      <h1>Assistant</h1>
+      <p>Type "help" to show how I can help you...</p>
+    </div>
+    
+        <div class="col-md-6 col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <span class="glyphicon glyphicon-comment">Chat</span>
+                </div>
+                <div class="panel-body">
+                  <ul class="chat" ng-show="history" >
+		    <div ng-show="history"  ng-repeat="n in [9,8,7,6,5,4,3,2,1,0]">
+		      <li class="left clearfix" ng-hide="history.input[n] == 'undefined'">
+			<span class="chat-img pull-left" ng-hide="history.input[n] == 'undefined'">
+                          <img src="https://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="img-circle">
+                        </span>
+                        <div class="chat-body clearfix " ng-hide="history.input[n] == 'undefined'" >
+                          <div class="header">
+                            <strong class="primary-font">You</strong> 
+                          </div>
+                          <p>{{history.input[n]}}
+                          </p>
+                        </div>
+                      </li>
+                      <li class="right clearfix" ng-hide="history.reply[n] == 'undefined'"><span class="chat-img pull-right">
+                          <img src="https://placehold.it/50/FA6F57/fff&amp;text=ME" alt="User Avatar" class="img-circle">
+                        </span>
+                        <div class="chat-body clearfix">
+                          <div class="header">
+                            <strong class="pull-right primary-font">Bot</strong>
+                          </div>
+                          <p ng-bind-html="history.reply[n]"></p>
+                          </p>
+                        </div>
+                      </li>
+		      
+                  </ul>
+                </div>
+                <div class="panel-footer">
+	
+                  <div class="input-group">
+           
+                      <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English ..." type="text" required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)">Send</button>
+                      </span>
+          
+                  </div>
+                </div>
+
+
+            </div>
+          </div>
+
+   </div>
+</div>
+
+
+  </body>
+</html>
