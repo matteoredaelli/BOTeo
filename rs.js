@@ -32,6 +32,24 @@ rs.setSubroutine("mytest", function (rs, args)  {
   });
 })
 
+rs.setSubroutine("biapis", function (rs, args)  {
+  return new rs.Promise(function(resolve, reject) {
+    const biapisUrl = config.get('biapis.url');
+    const url = biapisUrl + "/" + args.join("/");
+    const qs = {};
+    plugin_rest.get(url, qs, function(error, data){
+      console.log(data)
+      if(error) {
+        reject(error);
+      } else {
+        console.log(data);
+        resolve(utils.arraylist2string(data));
+      }
+    });
+  });
+});
+
+
 rs.setSubroutine("esSearch", function (rs, args)  {
   return new rs.Promise(function(resolve, reject) {
     const elasticUrl = config.get('elastic.url');
