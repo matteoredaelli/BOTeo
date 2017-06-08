@@ -9,7 +9,7 @@ exports.get = function(url, qs, callback) {
     qs: qs,
     json: true
   }, function(error, response) {
-    if (response.statusCode !== 200) {
+    if (! response || response.statusCode !== 200) {
       callback.call(this, error);
     } else {
       callback.call(this, null, response.body);
