@@ -75,7 +75,7 @@ function getReply(req, res) {
     var message  = req.body.message;
     var vars     = req.body.vars;
     var username = req.body.username;
-    /*
+
     if (req.cookies.username) {
 	username = req.cookies.username;
     } else {
@@ -84,10 +84,13 @@ function getReply(req, res) {
 	console.log(username);
 	res.cookie('username', username, { maxAge: 100000 * 60 });
     }
-    */
+
+    /*
     if (username == undefined) {
        username = "guest" + guest++;
     };
+    */
+    
     console.log(username);
     // Make sure username and message are included.
     if (typeof(message) === "undefined") {

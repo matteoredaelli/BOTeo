@@ -1,0 +1,8 @@
+// Now we don't need to explicitly write the \n characters every time!
++ help [me]|aiuto|cosa posso fare|aiutami
+- Alcune domande di esempio:
+^ qual'è il cap di carate brianza\n
+^ che tempo fa a milano\n
+^ mi dici il codice istat di verano bianza\n
+^ qual'è il prefisso di padova\n
+^ qual'è il patrono di padova\n

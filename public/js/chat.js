@@ -19,8 +19,9 @@ app.controller('planetController', function($scope, $http, $location) {
       .then(function(response) {
         ga('send', 'event', 'chaTeo', 'question', query.toLowerCase());
         
+
 	$scope.myreply = response.data.reply;
-	//$scope.history = response.data.vars["__history__"];
+	$scope.history = response.data.vars["__history__"];
 	$scope.query = "";
       });
   };

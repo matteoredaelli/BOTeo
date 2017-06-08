@@ -12,7 +12,7 @@ exports.get = function(url, qs, callback) {
     if (response.statusCode !== 200) {
       callback.call(this, error);
     } else {
-      callback.call(this, null, response.body.hits.hits);
+      callback.call(this, null, response.body);
     }
   });
 };

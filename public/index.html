@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta description="chat bot by Matteo Redaelli">
-    <title>chaTeo</title>
+
+    <title>Assistant</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     
     <script src="js/chat.js"></script>
-    <link rel="stylesheet" href="css/starter-template.css">
+    <link rel="stylesheet" href="css/chat.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -30,91 +30,7 @@
       ga('send', 'pageview');
     </script>
     
-<script type="text/javascript"><!--
-google_ad_client = "pub-2729401952108622";
-google_ad_width = 728;
-google_ad_height = 90;
-google_ad_format = "728x90_as";
-google_ad_type = "text_image";
-google_ad_channel = "";
-//-->
-</script>
-<script type="text/javascript"
-  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Matteo Redaelli EU</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#help">Help</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Matteo Redaelli EU</h1>
-        <p class="lead">fammi qualche domanda sui comuni italiani e sul tempo...</p>
-        
-        <div class="panel panel-success">
-          <div class="panel-heading" ng-bind-html="myreply"></div>
-        </div>
-        <script type="text/javascript"><!--
-                                           google_ad_client = "pub-2729401952108622";
-                                           google_ad_width = 728;
-                                           google_ad_height = 90;
-                                           google_ad_format = "728x90_as";
-                                           google_ad_type = "text_image";
-                                           google_ad_channel = "";
-                                           //-->
-        </script>
-        <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-        <div>
-          <form name="myForm">
-            <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English or Italian ..." type="text" required><br />
-            <span class="input-group-btn">
-              <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)" ng-disabled="myForm.$invalid">Send</button>
-            </span>
-          </form>
-        </div>
-        <br />
-        <h3 id="help">Sample questions</h3>
-        <p>che cap ha carate brianza</p>
-        <p>qual'è il prefisso telefonico di monza</p>
-        <p>qual'è il codice catastale di carate</p>
-        <p>qual'è patriono di carate</p>
-        <p>in quale provincia si trova carate</p>
-        <p>in quale regione si trova carate</p>
-        <p>che tempo fa a milano</p>
-      </div>
-
-<script type="text/javascript"><!--
-google_ad_client = "pub-2729401952108622";
-google_ad_width = 728;
-google_ad_height = 90;
-google_ad_format = "728x90_as";
-google_ad_type = "text_image";
-google_ad_channel = "";
-//-->
-</script>
-<script type="text/javascript"
-  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-    </div><!-- /.container -->
+    <h1></h1>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
@@ -124,7 +40,66 @@ google_ad_channel = "";
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
+<div class="container">
+  <div class="row">
 
+    <div class="col-md-12 col-sm-6 col-md-8">
+      <h1>Assistant</h1>
+      <p>Type "help" to show how I can help you...</p>
+    </div>
+    
+        <div class="col-md-6 col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <span class="glyphicon glyphicon-comment">Chat</span>
+                </div>
+                <div class="panel-body">
+                  <ul class="chat" ng-show="history" >
+		    <div ng-show="history"  ng-repeat="n in [9,8,7,6,5,4,3,2,1,0]">
+		      <li class="left clearfix" ng-hide="history.input[n] == 'undefined'">
+			<span class="chat-img pull-left" ng-hide="history.input[n] == 'undefined'">
+                          <img src="https://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="img-circle">
+                        </span>
+                        <div class="chat-body clearfix " ng-hide="history.input[n] == 'undefined'" >
+                          <div class="header">
+                            <strong class="primary-font">You</strong> 
+                          </div>
+                          <p>{{history.input[n]}}
+                          </p>
+                        </div>
+                      </li>
+                      <li class="right clearfix" ng-hide="history.reply[n] == 'undefined'"><span class="chat-img pull-right">
+                          <img src="https://placehold.it/50/FA6F57/fff&amp;text=ME" alt="User Avatar" class="img-circle">
+                        </span>
+                        <div class="chat-body clearfix">
+                          <div class="header">
+                            <strong class="pull-right primary-font">Bot</strong>
+                          </div>
+                          <p ng-bind-html="history.reply[n]"></p>
+                          </p>
+                        </div>
+                      </li>
+		      
+                  </ul>
+                </div>
+                <div class="panel-footer">
+	
+                  <div class="input-group">
+           
+                      <input id="btn-input" class="form-control input-sm" ng-model="query" ng-keyup="$event.keyCode == 13 && searchR(query)" placeholder="Tell me something in English ..." type="text" required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat" ng-click="searchR(query)">Send</button>
+                      </span>
+          
+                  </div>
+                </div>
+
+
+            </div>
+          </div>
+
+   </div>
+</div>
 
 
   </body>
